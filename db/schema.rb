@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_26_014732) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_27_022610) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,8 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_014732) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "round_id", null: false
-    t.index ["round_id"], name: "index_categories_on_round_id"
   end
 
   create_table "options", force: :cascade do |t|
@@ -53,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_014732) do
     t.string "description"
     t.string "template"
     t.bigint "category_id", null: false
-    t.bigint "round_id", null: false
+    t.bigint "round_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_questions_on_category_id"
@@ -73,7 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_014732) do
   add_foreign_key "answers", "options"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "rounds"
-  add_foreign_key "categories", "rounds"
   add_foreign_key "options", "questions"
   add_foreign_key "players", "rounds"
   add_foreign_key "questions", "categories"
