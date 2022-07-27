@@ -1,5 +1,5 @@
 class Round < ApplicationRecord
-  has_many :question
-  has_many :answer
-  has_one :player
+  has_many :questions
+  has_many :answers
+  has_many :players
 end
