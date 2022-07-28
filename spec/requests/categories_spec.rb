@@ -2,6 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "Categories", type: :request do
   describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+    context 'list catergories' do
+      before do
+        get  "/categories"
+      end
+      it "returns status code 200" do
+        expect(response).to have_http_status(200)
+      end
+    end
   end
 end
